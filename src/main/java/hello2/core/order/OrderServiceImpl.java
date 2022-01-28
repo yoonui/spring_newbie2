@@ -3,8 +3,10 @@ package hello2.core.order;
 import hello2.core.discount.DiscountPolicy;
 import hello2.core.member.Member;
 import hello2.core.member.MemberRepository;
-import hello2.core.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
@@ -12,6 +14,7 @@ public class OrderServiceImpl implements OrderService{
     // private final DiscountPolicy discountPolicy = new RateDiscountPolicy(); // 정률 할인 정책
     private final DiscountPolicy discountPolicy; // 인터페이스에 의존
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
